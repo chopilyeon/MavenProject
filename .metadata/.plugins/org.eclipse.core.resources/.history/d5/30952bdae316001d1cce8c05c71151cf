@@ -1,0 +1,29 @@
+package di.xml02;
+
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.GenericXmlApplicationContext;
+
+import di.xml01.Car;
+
+public class DriverMain {
+
+	public static void main(String[] args) {
+		
+		ApplicationContext context = new GenericXmlApplicationContext("di.xml02.xml");
+		
+		
+		Car car = (Car)context.getBean("car");
+		
+		car.printTireBrand();
+
+		
+		
+		Car car2 = context.getBean("car2");
+		
+		
+		//car.printTireBrand();
+		
+		
+	}	
+
+}

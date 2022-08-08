@@ -1,0 +1,11 @@
+package di.basic;
+
+public class Car {
+	
+	public car() {
+		
+		System.out.println("Car() 생성자 입니다.");
+	}
+	
+
+}

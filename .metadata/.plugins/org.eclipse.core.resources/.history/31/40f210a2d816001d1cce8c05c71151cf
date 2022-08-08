@@ -1,0 +1,9 @@
+package di.basic2;
+
+public class Car {
+	public Car() {
+		
+		
+	}
+
+}

@@ -1,0 +1,9 @@
+package di.basic;
+
+public class DriverMain {
+	
+	Car car = new Car();
+	car.printTireBrand()
+
+	}
+}

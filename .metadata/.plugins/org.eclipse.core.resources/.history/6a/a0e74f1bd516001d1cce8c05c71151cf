@@ -1,0 +1,13 @@
+package di.basic;
+
+public class Car {
+	
+	private HankookTire hankookTire;
+	
+	public Car() {
+		
+		System.out.println("Car() 생성자 입니다.");
+	}
+	
+
+}
