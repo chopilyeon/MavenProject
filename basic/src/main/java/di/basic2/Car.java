@@ -4,6 +4,7 @@ import di.basic.HankookTire;
 
 public class Car {
 	private Tire tire;
+	
 	public Car() {
 		System.out.println("car() 생성자");
 		

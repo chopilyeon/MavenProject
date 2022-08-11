@@ -1,9 +1,0 @@
-package di.basic2;
-
-public class Car {
-	public Car() {
-		System.out.println("car() 생성자");
-		
-	}
-
-}

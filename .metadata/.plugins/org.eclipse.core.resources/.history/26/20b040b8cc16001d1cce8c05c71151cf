@@ -1,9 +1,0 @@
-package basic;
-
-public class Hello {
-	public Hello(){
-		System.out.println("Spring 만들어짐");
-	}
-	
-
-}
