@@ -26,5 +26,16 @@ public class BoardServiceImpl implements BoardService {
 		System.out.println(list);
 		return list;
 	}
-
+	@Override
+	public BoardVO getOneBoard(int boardNo) {
+		BoardVO board = boardDAO.selectByNo(boardNo);	
+		return board;
+	}
+	
+	@Override
+	public void write(BoardVO boardVO) {
+		boardDAO.insert(boardVO);
+	}
+	
+	
 }

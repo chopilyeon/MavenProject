@@ -2,7 +2,6 @@
 
 <beans xmlns="http://www.springframework.org/schema/beans"
 
-
     xmlns:mvc="http://www.springframework.org/schema/mvc"
     xmlns:context="http://www.springframework.org/schema/context"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -20,9 +19,6 @@
 		<mvc:jsp prefix="/WEB-INF/jsp/" suffix=".jsp" />
 		</mvc:view-resolvers>
 	
-
-
-
 	
 	<bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource" destroy-method="close">
 		<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver"></property>
@@ -30,15 +26,15 @@
 		<property name="username" value="scott"/>
 		<property name="password" value="tiger"></property>	
 	</bean>
+	<!--얘가 sqlsessionTemplate를 만들어주는 것임. path로 dataSource를 처리해도 됨-->
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="dataSource" ref="dataSource"></property>
  		<property name="mapperLocations" value="classpath:config/sqlmapper/oracle/*.xml"/>	
+	    <property name="configLocation" value="classpath:config/mybatis/mybatis-config.xml"/>			
 	</bean>
 	<bean id ="sqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate">
 		<constructor-arg ref="sqlSessionFactory"></constructor-arg>
 	</bean>
-
-
 
 
 </beans>

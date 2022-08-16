@@ -11,8 +11,8 @@
 	<context:annotation-config/>
 	
 	<bean id="nexen" class="di.anno01.NexenTire"/>
-	<bean id = "kumho" class="di.anno01.KumhoTire"/>
-	<bean id = "hankook	" class="di.anno01.KumhoTire"/>
-	<bean id = "car" class="di.anno01.Car"/>
+	<bean id ="kumho" class="di.anno01.KumhoTire"/>
+	<bean id ="hankook" class="di.anno01.HankookTire"/>
+	<bean id ="car" class="di.anno01.Car"/>
 	
 </beans>

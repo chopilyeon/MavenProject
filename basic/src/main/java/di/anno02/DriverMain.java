@@ -8,7 +8,7 @@ public class DriverMain {
 		ApplicationContext context = new GenericXmlApplicationContext("di.anno02.xml");
 		
 		Car car = (Car)context.getBean("car");
-		car.printTireBrand();
+		car.printTireBrand();	
 		
 	}
 

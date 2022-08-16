@@ -11,7 +11,14 @@ index.jsp입니다.
 
 
 
-<a href="${pageContext.request.contextPath}/board">게시판</a>
+<a href="${pageContext.request.contextPath}/board">게시판</a><br>
+<a href="${pageContext.request.contextPath}/board/write">새글 쓰기</a><br>
+
+<a href="${pageContext.request.contextPath}/login">로그인</a>
+<a href="${pageContext.request.contextPath}/logout">로그아웃</a>
+
+<a href="http://localhost:3000/">리액트</a>
+
 
 </body>
 </html>

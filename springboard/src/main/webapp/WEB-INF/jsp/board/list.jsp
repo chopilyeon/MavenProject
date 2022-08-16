@@ -8,14 +8,30 @@
 <title>Insert title here</title>
 </head>
 <body>
-list.jsp입니다.<br>
 
 
+	
 
+
+<%-- 
 
 	<c:forEach items="${boardlist}" var="board">
-		${board.no} <br> ${board.title} <br> ${board.writer}
-	</c:forEach>
+		${board.no} <br><a href="${pageContext.request.contextPath }/board/detail?boardNo=${ board.no }"> ${board.title}</a> <br> ${board.writer}
+	</c:forEach> --%>
+
+
+	<c:if test="${not empty loginVO }">
+		${loginVO.name } 반가워요
+	</c:if>
+	<br>
+
+	<c:forEach items="${boardlist}" var="board">
+		${board.no} <br><a href="${pageContext.request.contextPath }/board/detail/${ board.no }"> ${board.title}</a> <br> ${board.writer}
+	</c:forEach> 
+
+
+<!--번호만 넘기는 방식을 어떨까?  -->
+<!-- /board/detail/3 으로 만드는거임 -->
 
 </body>
 </html>

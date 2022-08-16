@@ -2,7 +2,7 @@ package di.anno02;
 
 import org.springframework.stereotype.Component;
 
-@Component
+@Component 
 public class HankookTire implements Tire {
 	
 	

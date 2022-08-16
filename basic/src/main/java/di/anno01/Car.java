@@ -11,6 +11,8 @@ public class Car {
 	@Qualifier("hankook")
 	private Tire tire;
 	
+	
+	
 	private String msg;
 	
 	private String error;
@@ -36,10 +38,11 @@ public class Car {
 	
 
 	//setter 주입 -> setter 주입이라고 함. 
-	//@Autowired
-	//@Qualifier("hankook");
+	@Autowired
+	@Qualifier("kumho")
 	public void setTire(Tire tire) {
-		System.out.println("Car(HankookTire hankookTire) 생성자 입니다");
+		System.out.println("setter주입중입니다");
+		System.out.println("Car(kumho kumho) 생성자 입니다");
 		this.tire = tire;
 		
 	}
@@ -49,10 +52,12 @@ public class Car {
 	
 	//생성자 주입
 	@Autowired
-	public Car(@Qualifier("hankook")Tire tire) {
+	public Car(@Qualifier("kumho")Tire tire) {
+		System.out.println("생성자에 주입중입니다");
 		this.tire = tire;
-		System.out.println("Car(HankookTire hankookTire) 생성자 입니다");
+		System.out.println("Car(kumho kumhoTire) 생성자 입니다");
 	}
+	
 	
 	public Car(Tire tire,String msg) {
 		System.out.println("Car(Tire tire,String msg) 생성자입니다.");
@@ -79,79 +84,7 @@ public class Car {
 		System.out.println("장착한 타이어 브랜드는 "+ tire.getTireBrand());
 	}
 	
-	public void printMsg() {
-		System.out.println("MSG:"+msg);
-	}
 	
-	public void printMsg2() {
-		System.out.println("num :"+num);
-		System.out.println("MSG:"+msg);
-		
-	}
-
-	
-	public void printMsg3() {
-		if(list != null) {
-			for(String i : list) {
-				System.out.println(i);
-			}
-		}
-		System.out.println("list:"+list);
-		
-	}
-
-
-
-	public String getMsg() {
-		return msg;
-	}
-
-
-
-	public void setMsg(String msg) {
-		System.out.println("setter msg:"+msg);
-		this.msg = msg;
-	}
-
-
-
-	public String getError() {
-		return error;
-	}
-
-
-
-	public void setError(String error) {
-		this.error = error;
-	}
-
-
-
-	public int getNum() {
-		
-		return num;
-	}
-
-
-
-	public void setNum(int num) {
-		System.out.println("setter num:"+num);
-		this.num = num;
-	}
-
-
-
-	public List<String> getList() {
-		return list;
-	}
-
-
-
-	public void setList(List<String> list) {
-		this.list = list;
-	}
-
-
 
 	public Tire getTire() {
 		return tire;

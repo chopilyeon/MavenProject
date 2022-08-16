@@ -5,7 +5,7 @@ public class HankookTire implements Tire {
 	
 	
 	public HankookTire() {
-		System.out.println("KumhoTire() 생성자");
+		System.out.println("HankookTire() 생성자");
 	}
 	
 	

@@ -1,9 +1,17 @@
 package kr.ac.kopo.board.vo;
 
+import javax.validation.constraints.NotEmpty;
+
 public class BoardVO {
 	private int no;
+	
+	@NotEmpty(message="필수사항입니다")
 	private String title;
+	
+	@NotEmpty(message="필수사항입니다")
 	private String content;
+	
+	@NotEmpty(message="필수사항입니다")
 	private String writer;
 	private String regDate;
 	private int viewCnt;

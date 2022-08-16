@@ -7,7 +7,7 @@ public class DriverMain {
 
 	public static void main(String[] args) {
 		
-		ApplicationContext context = new GenericXmlApplicationContext("di.xml02.xml");
+		ApplicationContext context = new GenericXmlApplicationContext("di.xml01.xml");
 		
 		
 		Car car = (Car)context.getBean("car");

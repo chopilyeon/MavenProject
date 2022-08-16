@@ -31,6 +31,7 @@ public class Car {
 	public void printTireBrand() {
 		
 		System.out.println("장착한 타이어 브랜드는 "+ tire.getTireBrand());
+		
 	}
 
 
