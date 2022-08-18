@@ -14,6 +14,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import kr.ac.kopo.board.vo.BoardVO;
 import kr.ac.kopo.member.vo.MemberVO;
+import kr.ac.kopo.reply.vo.ReplyVO;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = {"classpath:config/spring/spring-mvc.xml"})
@@ -71,6 +72,16 @@ public class MyBatisTest {
 		
 		System.out.println(authMember);
 	}
+	@Test
+	public void insertReply() {
+		ReplyVO replyVO = new ReplyVO();
+		replyVO.setBoardNo(10);
+		replyVO.setContent("hhh");
+		replyVO.setWriter("jaehee");
+		replyVO.setNo(11);
+		sqlSessionTemplate.insert("reply.dao.replyDAO.insert",replyVO);
+	}
+	
 	
 	
 }

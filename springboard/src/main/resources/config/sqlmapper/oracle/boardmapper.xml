@@ -8,6 +8,7 @@
 		<result column="title" property="title"/>
 		<result column="reg_date" property="regDate"/>
 		<result column="view_cnt" property="viewCnt"/>	
+		<result column="reply_cnt" property="replyCnt"/>	
 	</resultMap>
 
 
@@ -23,6 +24,18 @@
   	INSERT INTO T_BOARD(NO,TITLE,WRITER,CONTENT) 
   	VALUES(SEQ_T_BOARD_NO.NEXTVAL,#{title},#{writer},#{content})
   </insert>
+  
+  <!--댓글 카운트 증가  -->
+  <update id ="increaseReplyCount" parameterType="int">
+  	UPDATE T_BOARD SET REPLY_CNT = REPLY_CNT +1 
+  	WHERE NO = #{boardNo}
+  </update>
+  
+  
+   <update id ="decreaseReplyCount" parameterType="int">
+  	UPDATE T_BOARD SET REPLY_CNT = REPLY_CNT -1 
+  	WHERE NO = #{boardNo}
+  </update>
   
     
 </mapper>

@@ -37,6 +37,7 @@ public class BoardController {
 	@RequestMapping("/board")
 	public String allboard(HttpServletRequest request) {
 		//여기서의 string은 사용자가 보는 url을 의미함
+		System.out.println("/board hanlder 동작");
 		
 		List<BoardVO> boardlist = new ArrayList<>();
 		boardlist =boardService.getAllBoard();
@@ -53,6 +54,8 @@ public class BoardController {
 	@RequestMapping("/board/detail")
 	public String detail(HttpServletRequest request, @RequestParam("boardNo") int boardNo, Model model) {
 		
+		
+		System.out.println("/board/detail hanlder 동작");
 		//해당 번호에 맞는 게시글을 가져온다.
 		//String boardNo = request.getParameter("boardNo");
 		
@@ -71,7 +74,7 @@ public class BoardController {
 	
 	@RequestMapping("/board/detail/{boardNo}")
 	public String detail(@PathVariable("boardNo") int boardNo, Model model) {
-		
+		System.out.println("/board/detail/boardNo hanlder 동작");
 		//해당 번호에 맞는 게시글을 가져온다.
 		//String boardNo = request.getParameter("boardNo");
 		
@@ -109,11 +112,12 @@ public class BoardController {
 //		BoardVO boardVO1 = new BoardVO();
 		
 //	}
-
+	//요청이랑 동일하면 그냥 글로 보내버림 
 	//자 이제 아무것도 안들어온 null값을 제거해보자! 
 	@GetMapping("/board/write")
 	public void writeGet(Model model) {
 		
+		System.out.println("/board/write get 동작");
 		BoardVO boardVO1 = new BoardVO();
 		model.addAttribute("boardVO1",boardVO1);
 	}
@@ -125,7 +129,7 @@ public class BoardController {
 	@PostMapping("/board/write")
 	public String writePost(@Valid @ModelAttribute("boardVO1") BoardVO boardVO,BindingResult result) {
 		
-		
+		System.out.println("/board/write post 동작");
 		//0. 입력받은 board가 null값이 포함안되어 있는지 확인한다 BindingResult를 활용함
 		//1. DB insert 작업하기 
 		//2. 다 완료 후에는 전체 게시글로 이동 

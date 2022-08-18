@@ -17,7 +17,11 @@
 
 </head>
 <body>
-	write.jsp입니다. 
+
+<header>
+	<jsp:include page="/WEB-INF/jsp/include/topMenu.jsp"></jsp:include>
+</header>
+
 	<form:form action="${pageContext.request.contextPath }/board/write" method="post" modelAttribute="boardVO1">
 		<table>
 			<tr>

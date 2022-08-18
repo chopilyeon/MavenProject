@@ -2,15 +2,28 @@
 
 <beans xmlns="http://www.springframework.org/schema/beans"
 
+
+	
+	
+
     xmlns:mvc="http://www.springframework.org/schema/mvc"
     xmlns:context="http://www.springframework.org/schema/context"
+    
+    xmlns:tx="http://www.springframework.org/schema/tx"
+    xmlns:task="http://www.springframework.org/schema/task"
+  
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://www.springframework.org/schema/beans   
     http://www.springframework.org/schema/beans/spring-beans.xsd
     http://www.springframework.org/schema/context   
     http://www.springframework.org/schema/context/spring-context.xsd
     http://www.springframework.org/schema/mvc
-    http://www.springframework.org/schema/mvc/spring-mvc.xsd">
+    http://www.springframework.org/schema/mvc/spring-mvc.xsd
+    http://www.springframework.org/schema/tx
+    http://www.springframework.org/schema/tx/spring-tx.xsd
+    http://www.springframework.org/schema/task
+    http://www.springframework.org/schema/task/spring-task.xsd">
+    
     
 	<context:component-scan base-package="kr.ac.kopo" />
    	 	<mvc:annotation-driven />
@@ -35,6 +48,61 @@
 	<bean id ="sqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate">
 		<constructor-arg ref="sqlSessionFactory"></constructor-arg>
 	</bean>
+	
+	<bean id="loginInterceptor" class="kr.ac.kopo.interceptor.LoginInterceptor"></bean>
+	
+	<context:component-scan base-package="kr.ac.kopo" />
+    <mvc:annotation-driven>
+    	<mvc:message-converters>
+    		<bean class="org.springframework.http.converter.StringHttpMessageConverter">
+    			<property name="supportedMediaTypes">
+    				<list>
+    					<value>text/html; charset=UTF-8</value>
+    				</list>
+    			</property>	
+    		</bean>
+    		<bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
+    		    <property name="supportedMediaTypes">
+    		    <list>
+    		    	<value>text/html; charset=UTF-8</value>
+    		    	<value>application/json; charset=UTF-8</value>		    	
+    		    </list>
+    		    </property>
+    		 </bean>
+    		
+    	</mvc:message-converters>
+    </mvc:annotation-driven>
+	
+	
+	
+	
+	
+	
+	<mvc:interceptors>
+		 <mvc:interceptor>
+		 	 <mvc:mapping path="/**/"/>
+		 	 <mvc:exclude-mapping path="/login"/>
+		 	 <mvc:exclude-mapping path="/member/login"/>
+		 	 <mvc:exclude-mapping path="/resources/**/"/>
+		 	 <mvc:exclude-mapping path="/board"/>
+		 	 <ref bean="loginInterceptor"/>
+		 </mvc:interceptor>
+	</mvc:interceptors>
+	
 
-
+	<!--트렌젝션 처리  -->
+	<bean id ="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource"></property>
+	</bean>
+	
+	
+	<tx:annotation-driven transaction-manager="transactionManager" />
+	
+	<task:annotation-driven/>
+	
+	
+	
+	
+	
+	
 </beans>

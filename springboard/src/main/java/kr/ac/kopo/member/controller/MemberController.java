@@ -29,6 +29,8 @@ public class MemberController {
 	
 	//로그인
 	
+	
+	
 	@RequestMapping(value="/login",method=RequestMethod.GET)
 	public String login(HttpServletRequest request) {
 		//spring form tag에서 사용할 memberVO를 공유영역에 등록시킨다.
@@ -75,19 +77,32 @@ public class MemberController {
 			System.out.println("authMember:"+ authMember);
 			if(authMember == null) {
 				//id 랑 password가 유효하지 않은 경우 
-				//
 				model.addAttribute("loginmsg","id와 password가 유효하지 않습니다");
 				return "member/login";
 			}else {
 				//session.setAttribute("loginVO",authMember);
 				model.addAttribute("loginVO",authMember);
 				//위에 annotation보면은 session에 등록하라고 붙어 있음. 
+			}		
+			//나쁜 사용자가 들어오면 null이 들어오게 됨 -> id 패스워드 잘못 들어왔다고 login.jsp로 넘기는 작업이 필요함
+			
+			
+			String dest = (String)session.getAttribute("dest");
+			
+			//interceptor를 거칠 일이 없으니 dest가 null이 되어버림. 로그인 먼저 한 선량한 유저에게 그런 에러가 발생하게 됨
+			
+			System.out.println("dest는 뭘까"+dest);
+			if(dest == null) {
+				return "redirect:/";
+			}else{
+				return "redirect:"+dest;
 			}
 			
 			
+			//return "redirect:/board";
 			
-			//나쁜 사용자가 들어오면 null이 들어오게 됨 -> id 패스워드 잘못 들어왔다고 login.jsp로 넘기는 작업이 필요함
-			return "redirect:/board";
+			
+			
 		}
 	}
 	
@@ -98,7 +113,7 @@ public class MemberController {
 		public String logout(HttpSession session, SessionStatus sessionStatus) {
 			
 			
-			//session.invalidate();
+			session.invalidate();
 			
 			//spring에서는 이렇게 하도록 하자~! 
 			

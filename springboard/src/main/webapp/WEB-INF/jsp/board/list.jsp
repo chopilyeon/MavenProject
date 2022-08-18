@@ -9,6 +9,10 @@
 </head>
 <body>
 
+<header>
+	<jsp:include page="/WEB-INF/jsp/include/topMenu.jsp"></jsp:include>
+</header>
+
 
 	
 
@@ -19,14 +23,8 @@
 		${board.no} <br><a href="${pageContext.request.contextPath }/board/detail?boardNo=${ board.no }"> ${board.title}</a> <br> ${board.writer}
 	</c:forEach> --%>
 
-
-	<c:if test="${not empty loginVO }">
-		${loginVO.name } 반가워요
-	</c:if>
-	<br>
-
 	<c:forEach items="${boardlist}" var="board">
-		${board.no} <br><a href="${pageContext.request.contextPath }/board/detail/${ board.no }"> ${board.title}</a> <br> ${board.writer}
+		<br>	게시글 번호: ${board.no} <br><a href="${pageContext.request.contextPath }/board/detail/${ board.no }"> ${board.title}</a> <br> ${board.writer} <br>댓글 수:${board.replyCnt} <br>
 	</c:forEach> 
 
 

@@ -4,7 +4,16 @@ import javax.validation.constraints.NotEmpty;
 
 public class BoardVO {
 	private int no;
+	private int replyCnt;
 	
+	public int getReplyCnt() {
+		return replyCnt;
+	}
+	public void setReplyCnt(int replyCnt) {
+		this.replyCnt = replyCnt;
+	}
+
+
 	@NotEmpty(message="필수사항입니다")
 	private String title;
 	
@@ -52,12 +61,12 @@ public class BoardVO {
 	public void setViewCnt(int viewCnt) {
 		this.viewCnt = viewCnt;
 	}
-	
-
 	@Override
 	public String toString() {
-		return "BoardVO [no=" + no + ", title=" + title + ", content=" + content + ", writer=" + writer + ", regDate="
-				+ regDate + ", viewCnt=" + viewCnt + "]";
+		return "BoardVO [no=" + no + ", replyCnt=" + replyCnt + ", title=" + title + ", content=" + content
+				+ ", writer=" + writer + ", regDate=" + regDate + ", viewCnt=" + viewCnt + "]";
 	}
+	
+
 
 }

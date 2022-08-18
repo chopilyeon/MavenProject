@@ -11,13 +11,13 @@
  		alert('${loginmsg}');
  	}
 </script>
-
-
-
-
 </head>
 <body>
- login.jsp입니다
+
+<header>
+	<jsp:include page="/WEB-INF/jsp/include/topMenu.jsp"></jsp:include>
+</header>
+
   <form:form action="${pageContext.request.contextPath}/login" method="post" modelAttribute="memberVO">
   	<table>
   		<tr>
@@ -26,7 +26,7 @@
   				<form:input path="id"/>
   				<form:errors path="id"></form:errors>
   			</td>
-  			
+ 		
   		</tr>
   		<tr>
   			<th>Password</th>
@@ -35,8 +35,9 @@
   				<form:errors path="password"></form:errors>
   			</td>
   		</tr>
-  		<input type="submit" value="제출"/>
+  		<input type="submit" value="로그인1"/>
   	</table>
   </form:form>
+  
 </body>
 </html>
